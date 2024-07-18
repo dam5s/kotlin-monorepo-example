@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package io.damo.kotlinmonorepo.greetingsservice.protocol;
+
+option java_multiple_files = true;
+
+service GreetingsService {
+  rpc tryFindGreeting (TryFindRequest) returns (GreetingResponse) {}
+}
+
+message TryFindRequest {
+}
+
+message Greeting {
+  string id = 1;
+  string message = 2;
+}
+
+message GreetingResponse {
+  optional Greeting greeting = 1;
+}

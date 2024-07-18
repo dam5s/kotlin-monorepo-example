@@ -1,0 +1,41 @@
+name: build
+on: push
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgresql
+          POSTGRES_PASSWORD: postgresql
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup java'
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+          cache: 'gradle'
+      - name: 'Copy dummy secrets'
+        run: |
+          cp gradle.properties.example gradle.properties
+      - name: 'Database setup'
+        env:
+          PGPASSWORD: postgresql
+        run: |
+          psql --host localhost --username postgresql < databases/create_local_databases.sql
+          ./gradlew migrate
+      - name: 'Build'
+        env:
+          COMMERCE_TOOLS_CLIENT_SECRET: ${{ secrets.COMMERCE_TOOLS_CLIENT_SECRET }}
+        run: |
+          ./gradlew build -x integration-tests:test

@@ -1,0 +1,41 @@
+GRAPHQL http://localhost:8080/graphql
+
+query ($name: String) {
+    sayHello(name: $name) {
+        message
+    }
+}
+
+{
+  "name": "Damien"
+}
+
+###
+GRPC localhost:8081/io.damo.kotlinmonorepo.greetingsservice.protocol.GreetingsService/tryFindGreeting
+
+###
+GET http://localhost:8091/health
+
+###
+GRPC localhost:8082/io.damo.kotlinmonorepo.helloservice.protocol.v2.HelloService/hello
+Content-Type: application/json
+
+{
+  "name": "Damien"
+}
+
+###
+GRPC localhost:8082/io.damo.kotlinmonorepo.helloservice.protocol.v2.HelloService/helloCustomer
+Content-Type: application/json
+
+{
+  "customerEmail": "damien@initialcapacity.io"
+}
+
+###
+GRPC localhost:8082/io.damo.kotlinmonorepo.helloservice.protocol.v2.HelloService/helloCustomer
+Content-Type: application/json
+
+{
+  "customerId": "0bff9fc8-a2b4-45fc-a68f-d703d0b2cf25"
+}

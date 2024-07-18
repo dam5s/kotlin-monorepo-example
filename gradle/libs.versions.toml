@@ -1,0 +1,75 @@
+[versions]
+kotlin = "2.0.0"
+grpc = "1.64.0"
+protobuf = "3.25.3"
+grpc-kotlin = "1.4.1"
+hikari = "5.1.0"
+coroutines = "1.8.1"
+postgresql = "42.7.3"
+okhttp = "4.12.0"
+ktor = "2.3.11"
+jackson = "2.17.+"
+expedia-group = "7.1.1"
+slf4j = "2.0.13"
+logback = "1.5.6"
+commercetools-sdk = "17.12.0"
+mockk = "1.13.11"
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+protobuf = { id = "com.google.protobuf", version = "0.9.4" }
+graphql = { id = "com.expediagroup.graphql", version.ref = "expedia-group" }
+
+[libraries]
+flyway-core = { group = "org.flywaydb", name = "flyway-core", version = "10.13.0" }
+flyway-postgresql = { group = "org.flywaydb", name = "flyway-database-postgresql", version = "10.12.0" }
+postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql" }
+hikari = { group = "com.zaxxer", name = "HikariCP", version.ref = "hikari" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+jackson = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version.ref = "jackson" }
+ktor-server-core = { group = "io.ktor", name = "ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-netty = { group = "io.ktor", name = "ktor-server-netty-jvm", version.ref = "ktor" }
+
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
+
+grpc-api = { group = "io.grpc", name = "grpc-api", version.ref = "grpc" }
+grpc-netty = { group = "io.grpc", name = "grpc-netty", version.ref = "grpc" }
+grpc-stub = { group = "io.grpc", name = "grpc-stub", version.ref = "grpc" }
+grpc-protobuf = { group = "io.grpc", name = "grpc-protobuf", version.ref = "grpc" }
+grpc-services = { group = "io.grpc", name = "grpc-services", version.ref = "grpc" }
+grpc-kotlin-stub = { group = "io.grpc", name = "grpc-kotlin-stub", version.ref = "grpc-kotlin" }
+protobuf-kotlin = { group = "com.google.protobuf", name = "protobuf-kotlin", version.ref = "protobuf" }
+
+graphql-ktor-server = { group = "com.expediagroup", name = "graphql-kotlin-ktor-server", version.ref = "expedia-group" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
+
+commercetools-http-client = { group = "com.commercetools.sdk", name = "commercetools-http-client", version.ref = "commercetools-sdk" }
+commercetools-sdk-java-api = { group = "com.commercetools.sdk", name = "commercetools-sdk-java-api", version.ref = "commercetools-sdk" }
+
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+
+# These three dependencies are actually used in protobuf gradle plugin configurations
+grpc-kotlin-gen = { group = "io.grpc", name = "protoc-gen-grpc-kotlin", version.ref = "grpc-kotlin" }
+grpc-java-gen = { group = "io.grpc", name = "protoc-gen-grpc-java", version.ref = "grpc" }
+protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
+
+[bundles]
+grpc = [
+    "grpc-netty",
+    "grpc-stub",
+    "grpc-protobuf",
+    "grpc-services",
+    "grpc-kotlin-stub",
+    "protobuf-kotlin",
+]
+ktor = [
+    "jackson",
+    "ktor-server-core",
+    "ktor-server-netty",
+]
+commercetools = [
+    "commercetools-http-client",
+    "commercetools-sdk-java-api",
+]

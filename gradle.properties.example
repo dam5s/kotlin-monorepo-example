@@ -1,0 +1,6 @@
+commerceTools.authUrl=https://auth.europe-west1.gcp.commercetools.com
+commerceTools.apiUrl=https://api.europe-west1.gcp.commercetools.com
+commerceTools.projectKey=my-project-key
+commerceTools.scopes=some-scopes
+commerceTools.clientId=some-client-id
+commerceTools.clientSecret=<secret>
