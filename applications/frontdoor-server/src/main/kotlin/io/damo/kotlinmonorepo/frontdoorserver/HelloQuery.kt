@@ -1,9 +1,8 @@
 package io.damo.kotlinmonorepo.frontdoorserver
 
-import io.damo.kotlinmonorepo.helloservice.protocol.v2.HelloCustomerRequest
+import com.expediagroup.graphql.server.operations.Query
 import io.damo.kotlinmonorepo.helloservice.protocol.v2.HelloRequest
 import io.damo.kotlinmonorepo.helloservice.protocol.v2.HelloServiceGrpcKt
-import com.expediagroup.graphql.server.operations.Query
 import io.grpc.Channel
 
 data class SayHelloResponse(
@@ -12,11 +11,7 @@ data class SayHelloResponse(
 
 class HelloQuery(private val helloChannel: Channel) : Query {
 
-    suspend fun sayHello(
-        name: String? = null,
-        customerId: String? = null,
-        customerEmail: String? = null,
-    ): SayHelloResponse {
+    suspend fun sayHello(name: String? = null): SayHelloResponse {
         val stub = HelloServiceGrpcKt.HelloServiceCoroutineStub(helloChannel)
 
         val response = when {
@@ -25,18 +20,6 @@ class HelloQuery(private val helloChannel: Channel) : Query {
                     .apply { setName(name) }
                     .build()
                 stub.hello(request)
-            }
-            customerId != null -> {
-                val request = HelloCustomerRequest.newBuilder()
-                    .apply { setCustomerId(customerId) }
-                    .build()
-                stub.helloCustomer(request)
-            }
-            customerEmail != null -> {
-                val request = HelloCustomerRequest.newBuilder()
-                    .apply { setCustomerEmail(customerEmail) }
-                    .build()
-                stub.helloCustomer(request)
             }
             else -> {
                 val request = HelloRequest.newBuilder()

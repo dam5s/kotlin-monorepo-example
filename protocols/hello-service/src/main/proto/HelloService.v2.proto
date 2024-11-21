@@ -6,16 +6,10 @@ option java_multiple_files = true;
 
 service HelloService {
   rpc hello (HelloRequest) returns (HelloReply) {}
-  rpc helloCustomer (HelloCustomerRequest) returns (HelloReply) {}
 }
 
 message HelloRequest {
   optional string name = 1;
-}
-
-message HelloCustomerRequest {
-  optional string customerId = 1;
-  optional string customerEmail = 2;
 }
 
 message HelloReply {

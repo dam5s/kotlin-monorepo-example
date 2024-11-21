@@ -8,6 +8,7 @@ import io.damo.kotlinmonorepo.serversupport.requiredIntEnvironmentVariable
 import io.damo.kotlinmonorepo.serversupport.resolvePort
 import com.expediagroup.graphql.server.ktor.GraphQL
 import com.expediagroup.graphql.server.ktor.graphQLPostRoute
+import com.expediagroup.graphql.server.ktor.graphQLSDLRoute
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.engine.ApplicationEngine
@@ -32,6 +33,7 @@ private fun injectAppModule(helloOptions: ChannelConnectionOptions): Application
 
         install(Routing) {
             graphQLPostRoute()
+            graphQLSDLRoute()
         }
     }
 }

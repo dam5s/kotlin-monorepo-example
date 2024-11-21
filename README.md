@@ -64,7 +64,7 @@ docker run \
 
 Locally we don't need to do that, we just use `./gradlew migrate`
 
-## Service lifecycle 
+## Service lifecycle
 
 The service and the database lifecycle is detailed [in this document](./docs/SERVICE_LIFECYCLE.md)
 

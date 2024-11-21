@@ -3,7 +3,6 @@ package testing.kotlinmonorepo.helloserver
 import io.damo.kotlinmonorepo.greetingsserver.greetingsservice.GreetingRecord
 import io.damo.kotlinmonorepo.grpcserversupport.ApplicationServer
 import io.damo.kotlinmonorepo.grpcserversupport.ServerPorts
-import io.damo.kotlinmonorepo.helloserver.customersapi.CommerceToolsOptions
 import io.damo.kotlinmonorepo.helloserver.server
 import io.damo.kotlinmonorepo.helloservice.protocol.HelloRequest
 import io.damo.kotlinmonorepo.helloservice.protocol.HelloServiceGrpcKt
@@ -27,7 +26,6 @@ class HelloServiceTest : GrpcServerTest() {
         return server(
             ports = ServerPorts.forTests,
             greetingsOptions = testGreetingsServer.connectionOptions(),
-            commerceToolsOptions = CommerceToolsOptions.none,
         )
     }
 

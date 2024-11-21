@@ -31,13 +31,6 @@ tasks {
         environment["ENABLE_DEBUG_LOGS"] = "true"
         environment["GREETINGS_HOST"] = "localhost"
         environment["GREETINGS_PORT"] = "8081"
-
-        environment["COMMERCE_TOOLS_AUTH_URL"] = prop("commerceTools.authUrl")
-        environment["COMMERCE_TOOLS_API_URL"] = prop("commerceTools.apiUrl")
-        environment["COMMERCE_TOOLS_PROJECT_KEY"] = prop("commerceTools.projectKey")
-        environment["COMMERCE_TOOLS_SCOPES"] = prop("commerceTools.scopes")
-        environment["COMMERCE_TOOLS_CLIENT_ID"] = prop("commerceTools.clientId")
-        environment["COMMERCE_TOOLS_CLIENT_SECRET"] = prop("commerceTools.clientSecret")
     }
 
     jar {

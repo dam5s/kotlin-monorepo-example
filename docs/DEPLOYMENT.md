@@ -137,8 +137,6 @@ Once the app is created, the liveness probe can be configured on the Azure porta
  * Initial delay seconds `0`
  * Period seconds `10`
 
-The liveness probe API is currently not implemented in Typescript.
-
 ## Create hello-server container app
 
 * `./gradlew applications:hello-server:container`

@@ -35,7 +35,5 @@ jobs:
           psql --host localhost --username postgresql < databases/create_local_databases.sql
           ./gradlew migrate
       - name: 'Build'
-        env:
-          COMMERCE_TOOLS_CLIENT_SECRET: ${{ secrets.COMMERCE_TOOLS_CLIENT_SECRET }}
         run: |
-          ./gradlew build -x integration-tests:test
+          ./gradlew build
